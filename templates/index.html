@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Interface</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>PATTCHEZZ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-box" id="chat-box">
-            <div class="message bot-message">Hello! How can I assist you today?</div>
-        </div>
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="Type your message here...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
+    <h1>Welcome to PATTCHEZZ</h1>
+    <div id="chatbox">
+        <textarea id="chat" rows="10" cols="50" readonly></textarea><br>
+        <input type="text" id="userInput" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
     </div>
     <script>
         function sendMessage() {
-            const userInput = document.getElementById('user-input').value;
-            if (userInput.trim()) {
-                const chatBox = document.getElementById('chat-box');
-                chatBox.innerHTML += `<div class="message user-message">${userInput}</div>`;
-                chatBox.innerHTML += `<div class="message bot-message">Thank you for your message!</div>`;
-                document.getElementById('user-input').value = '';
-                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the latest message
-            }
+            const userMessage = document.getElementById('userInput').value;
+            const chatBox = document.getElementById('chat');
+            chatBox.value += `You: ${userMessage}\n`;
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ 'message': userMessage }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                chatBox.value += `PATTCHEZZ: ${data.message}\n`;
+                document.getElementById('userInput').value = '';
+            });
         }
     </script>
 </body>
