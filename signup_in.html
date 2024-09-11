@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattchez Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* body {
+            background: linear-gradient(135deg, rgba(173,216,230,0.5), rgba(255,255,255,0.7));
+            min-height: 100vh;
+        } */
+        body {
+        background: url('./Pattchez_full_body.jpeg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        
+    }
+      /* Custom button colors for both sign-in and sign-up */
+    .custom-btn {
+        background-color: #9fa8df; /* Lighter blue with a purple tint */
+    }
+
+    .custom-btn:hover {
+        background-color: #d4a5a8; /* Light maroon on hover */
+    }
+    </style>
+    
+</head>
+<body class="flex items-center justify-center p-5">
+    <div class=" opacity-90 max-w-md w-full bg-gray-100 shadow-lg rounded-xl p-8 space-y-6 form container ">
+        
+
+        <h1 class="text-center text-3xl font-bold text-gray-800 tracking-wide">Pattchez</h1>
+        <p class="text-center text-sm text-gray-600">Welcome! Sign in or sign up to continue</p>
+
+        <!-- Toggle between Sign In and Sign Up -->
+        <div class="flex justify-center mb-4 ">
+            <button id="toggle-signin" class="bg-gray-200 text-gray-600 py-2 px-6 rounded-full hover:bg-gray-300 focus:outline-none transition duration-300 ease-in-out mx-2 active:bg-gray-400">
+                Sign In
+            </button>
+            <button id="toggle-signup" class="bg-gray-200 text-gray-600 py-2 px-6 rounded-full hover:bg-gray-300 focus:outline-none transition duration-300 ease-in-out mx-2 active:bg-gray-400">
+                Sign Up
+            </button>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="signin-form" class="space-y-4" action="index.html" method="post">
+            <div>
+                <label for="username" class="block text-gray-700 font-bold">User name</label>
+                <input id="username" type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Enter your username" />
+            </div>
+            <div>
+                <label for="password" class="block text-gray-700 font-bold">Password</label>
+                <input id="password" type="password" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Enter your password" />
+            </div>
+
+            <!-- Sign In Button -->
+            <div class="flex justify-center">
+                <button type="submit" class=" font-bold w-full py-2 text-white rounded-lg custom-btn focus:outline-none transition duration-300 ease-in-out">
+                    Sign In
+                </button>
+            </div>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signup-form" class="space-y-4 hidden" action="index.html" method="post">
+            <div>
+                <label for="new-username" class="block text-gray-700 font-bold">User name</label>
+                <input id="new-username" type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Choose a username" />
+            </div>
+            <div>
+                <label for="email" class="block text-gray-700 font-bold">Email</label>
+                <input id="email" type="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Enter your email" />
+            </div>
+            <div>
+                <label for="new-password" class="block text-gray-700 font-bold">Password</label>
+                <input id="new-password" type="password" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none" placeholder="Choose a password" />
+            </div>
+
+            <!-- Sign Up Button -->
+            <div class="flex justify-center">
+                <button type="submit" class="font-bold w-full py-2 text-white rounded-lg bg-[#9fa8da] hover:bg-[#d4a5a5] focus:outline-none transition duration-300 ease-in-out">
+                    Sign Up
+                </button>
+                
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Toggling between Sign In and Sign Up forms
+        const toggleSignin = document.getElementById('toggle-signin');
+        const toggleSignup = document.getElementById('toggle-signup');
+        const signinForm = document.getElementById('signin-form');
+        const signupForm = document.getElementById('signup-form');
+
+        toggleSignin.addEventListener('click', () => {
+            signupForm.classList.add('hidden');
+            signinForm.classList.remove('hidden');
+            toggleSignin.classList.add('bg-gray-400');
+            toggleSignup.classList.remove('bg-gray-400');
+        });
+
+        toggleSignup.addEventListener('click', () => {
+            signinForm.classList.add('hidden');
+            signupForm.classList.remove('hidden');
+            toggleSignup.classList.add('bg-gray-400');
+            toggleSignin.classList.remove('bg-gray-400');
+        });
+    </script>
+</body>
+</html>

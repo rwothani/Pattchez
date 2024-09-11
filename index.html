@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattchez - Main Interaction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#e8ebf1] min-h-screen flex items-center justify-center p-4 md:p-8">
+<!-- Main Container -->
+<div class="flex flex-col md:flex-row bg-white shadow-lg rounded-2xl overflow-hidden max-w-7xl w-full space-y-6 md:space-y-0 md:space-x-6 p-6">
+    
+    <!-- Sidebar -->
+    <aside class="w-full md:w-1/4 bg-[#f5f5f5] p-4 space-y-6 rounded-2xl shadow-lg">
+        <!-- Bot Avatar -->
+        <div class="w-24 h-24 rounded-full border-4 border-gray-300 flex items-center justify-center bg-gray-100 overflow-hidden mx-auto">
+            <img src="./Pattchez.jpg" alt="🤖" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='🤖';">
+        </div>
+        
+        <!-- Sidebar Navigation -->
+        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">History</button>
+        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Contacts</button>
+        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Resources</button>
+        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Recommended Playlists</button>
+        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Journal</button>
+    </aside>
+    
+    <!-- Chat Section -->
+    <section class="w-full md:w-3/4 bg-white p-6 rounded-2xl shadow-lg relative">
+        <!-- Chat Header -->
+        <div class="mb-4">
+            <h1 class="text-2xl font-semibold text-gray-700">Chat with Pattchez</h1>
+        </div>
+        
+        <!-- Chat Messages -->
+        <div id="chat-container" class="flex flex-col space-y-4 overflow-y-auto max-h-[60vh] p-4 bg-gray-100 rounded-lg">
+            <!-- Placeholder message, will be dynamically replaced -->
+        </div>
+        
+        <!-- Chat Input -->
+        <div class="absolute bottom-4 left-0 right-0 px-6">
+            <form id="chat-form" class="flex space-x-4">
+                <!-- Multiline Textarea -->
+                <textarea id="user-input" rows="2" placeholder="Type your message..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#9fa8da] resize-none"></textarea>
+                <button type="submit" class="bg-[#9fa8da] text-white px-4 py-2 rounded-lg hover:bg-[#d4a5a5] transition duration-300">Send</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Handle Chat Input Submission
+    document.getElementById('chat-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        // Get user input
+        const userInput = document.getElementById('user-input').value;
+        if (!userInput.trim()) return; // Prevent empty messages
+        
+        // Create user message div
+        const userMessage = document.createElement('div');
+        userMessage.classList.add('flex', 'justify-end');
+        userMessage.innerHTML = `
+            <div class="bg-gray-300 text-gray-900 p-3 rounded-lg shadow-md max-w-[80%]">${userInput}</div>
+        `;
+        
+        // Append user message to chat container
+        document.getElementById('chat-container').appendChild(userMessage);
+    
+        // Clear input field
+        document.getElementById('user-input').value = '';
+    
+        // Simulate bot reply (You can replace this logic with actual bot response)
+        setTimeout(() => {
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('flex');
+            botMessage.innerHTML = `
+                <div class="bg-[#9fa8da] text-white p-3 rounded-lg shadow-md max-w-[80%]">Here’s a helpful suggestion for you!</div>
+            `;
+            
+            // Append bot message to chat container
+            document.getElementById('chat-container').appendChild(botMessage);
+            
+            // Auto-scroll to the bottom of the chat
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }, 800); // Bot response delay
+    });
+    </script>
+</body>
+</html>
