@@ -18,13 +18,31 @@
         </div>
         
         <!-- Sidebar Navigation -->
-        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">History</button>
+        <button id="history-btn" class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">History</button>
+        
         <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Contacts</button>
         <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Resources</button>
-        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Recommended Playlists</button>
-        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Journal</button>
+        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Recommended Playlists</button> 
+        <button id="journal-button"  class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Journal</button>
     </aside>
     
+
+    <!-- Journal Section (Initially hidden) -->
+<div id="journal-section" class="hidden p-4 bg-white shadow-md rounded-lg max-w-4xl w-full">
+    <h2 class="text-xl font-semibold mb-4">Journal</h2>
+
+    <!-- Input Area for New Entries -->
+    <div class="mb-6">
+        <textarea id="journal-entry" rows="5" placeholder="Write your thoughts here..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#9fa8da]"></textarea>
+        <button id="save-entry" class="mt-2 bg-[#9fa8da] text-white px-4 py-2 rounded-lg hover:bg-[#d4a5a5] transition duration-300">Save Entry</button>
+    </div>
+
+    <!-- Display Area for Saved Entries -->
+    <div id="journal-entries" class="space-y-4 overflow-y-auto max-h-[40vh] p-4 bg-gray-100 rounded-lg">
+        <!-- Placeholder for dynamic content -->
+    </div>
+</div>
+
     <!-- Chat Section -->
     <section class="w-full md:w-3/4 bg-white p-6 rounded-2xl shadow-lg relative">
         <!-- Chat Header -->
@@ -46,6 +64,13 @@
             </form>
         </div>
     </section>
+
+    <!-- History Section (below the chat area or inside the sidebar) -->
+<div id="history-section" class="hidden p-4 bg-white shadow-md rounded-lg max-w-sm">
+    <h2 class="text-lg font-semibold mb-4">Conversation History</h2>
+    <ul id="conversation-list" class="space-y-2"></ul>
+</div>
+
 </div>
 
 <script>
@@ -87,5 +112,139 @@
         }, 800); // Bot response delay
     });
     </script>
+
+
+<!-- scrpt for the history -->
+<script>
+    const mockConversations = [
+        {
+            id: 1,
+            date: "2024-09-14",
+            messages: [
+                { type: "bot", text: "Hello! How can I assist you today?" },
+                { type: "user", text: "Can you suggest some resources for stress relief?" },
+                { type: "bot", text: "Sure! Here are a few resources on stress management." }
+            ]
+        },
+        {
+            id: 2,
+            date: "2024-09-15",
+            messages: [
+                { type: "bot", text: "How are you feeling today?" },
+                { type: "user", text: "I'm feeling a bit stressed." },
+                { type: "bot", text: "Let me suggest some techniques to help." }
+            ]
+        }
+    ];
+
+    const historyBtn = document.getElementById('history-btn');
+    const historySection = document.getElementById('history-section');
+    const conversationList = document.getElementById('conversation-list');
+    
+    // Toggle and display history
+    historyBtn.addEventListener('click', () => {
+        historySection.classList.toggle('hidden');
+        conversationList.innerHTML = ''; // Clear list
+        mockConversations.forEach(convo => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Conversation on ${convo.date}`;
+            listItem.classList.add('cursor-pointer', 'hover:text-blue-500');
+            listItem.addEventListener('click', () => loadConversation(convo));
+            conversationList.appendChild(listItem);
+        });
+    });
+
+    // Load conversation into the chat area
+    function loadConversation(conversation) {
+        const chatArea = document.querySelector('.chat-messages'); 
+        chatArea.innerHTML = ''; // Clear chat area
+
+        conversation.messages.forEach(msg => {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('flex', msg.type === 'bot' ? 'justify-start' : 'justify-end');
+            
+            const messageContent = document.createElement('div');
+            messageContent.classList.add(msg.type === 'bot' ? 'bg-[#9fa8da]' : 'bg-gray-300', 'text-white', 'p-3', 'rounded-lg', 'shadow-md');
+            messageContent.textContent = msg.text;
+
+            messageDiv.appendChild(messageContent);
+            chatArea.appendChild(messageDiv);
+        });
+    }
+</script>
+
+<!-- script for  the journal -->
+<script>
+    const journalButton = document.getElementById('journal-button');
+    const journalSection = document.getElementById('journal-section');
+
+    // Toggle the Journal Section when the button is clicked
+    journalButton.addEventListener('click', () => {
+        journalSection.classList.toggle('hidden'); // Show or hide the Journal section
+    });
+
+    // JavaScript to handle saving and displaying entries (from the mockup code)
+    const journalEntries = [];
+    const saveEntryButton = document.getElementById('save-entry');
+    const journalEntryInput = document.getElementById('journal-entry');
+    const journalEntriesContainer = document.getElementById('journal-entries');
+
+    function displayJournalEntries() {
+        journalEntriesContainer.innerHTML = '';
+        journalEntries.forEach((entry, index) => {
+            const entryDiv = document.createElement('div');
+            entryDiv.classList.add('p-4', 'bg-white', 'rounded-lg', 'shadow-md', 'relative');
+            
+            const entryText = document.createElement('p');
+            entryText.textContent = entry.text;
+            entryText.classList.add('text-gray-700');
+            
+            const entryDate = document.createElement('small');
+            entryDate.textContent = entry.date;
+            entryDate.classList.add('block', 'text-gray-400', 'mt-2');
+            
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.classList.add('absolute', 'top-2', 'right-16', 'text-sm', 'text-blue-500', 'hover:underline');
+            editButton.onclick = () => editEntry(index);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('absolute', 'top-2', 'right-4', 'text-sm', 'text-red-500', 'hover:underline');
+            deleteButton.onclick = () => deleteEntry(index);
+
+            entryDiv.appendChild(entryText);
+            entryDiv.appendChild(entryDate);
+            entryDiv.appendChild(editButton);
+            entryDiv.appendChild(deleteButton);
+            journalEntriesContainer.appendChild(entryDiv);
+        });
+    }
+
+    saveEntryButton.addEventListener('click', () => {
+        const text = journalEntryInput.value.trim();
+        if (text) {
+            const newEntry = { text, date: new Date().toLocaleString() };
+            journalEntries.push(newEntry);
+            journalEntryInput.value = '';
+            displayJournalEntries();
+        }
+    });
+
+    function editEntry(index) {
+        const newText = prompt('Edit your entry:', journalEntries[index].text);
+        if (newText !== null) {
+            journalEntries[index].text = newText;
+            displayJournalEntries();
+        }
+    }
+
+    function deleteEntry(index) {
+        journalEntries.splice(index, 1);
+        displayJournalEntries();
+    }
+</script>
+
+
 </body>
 </html>
