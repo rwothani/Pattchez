@@ -14,15 +14,18 @@
     <aside class="w-full md:w-1/4 bg-[#f5f5f5] p-4 space-y-6 rounded-2xl shadow-lg">
         <!-- Bot Avatar -->
         <div class="w-24 h-24 rounded-full border-4 border-gray-300 flex items-center justify-center bg-gray-100 overflow-hidden mx-auto">
-            <img src="./Pattchez.jpg" alt="🤖" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='🤖';">
+            <img src="./Pattchez.jpeg" alt="🤖" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='🤖';">
         </div>
         
         <!-- Sidebar Navigation -->
         <button id="history-btn" class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">History</button>
         
-        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Contacts</button>
-        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Resources</button>
-        <button class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Recommended Playlists</button> 
+        <button id="contacts-btn" class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Contacts</button>
+        
+        <!-- Sidebar Navigation -->
+        <button id="resources-btn" class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Resources</button>
+        <button id="playlists-btn" class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Recommended Playlists</button>
+
         <button id="journal-button"  class="w-full py-2 text-left font-semibold bg-white hover:bg-[#d4a5a5] rounded-full px-4 transition duration-300">Journal</button>
     </aside>
     
@@ -71,7 +74,147 @@
     <ul id="conversation-list" class="space-y-2"></ul>
 </div>
 
+<!-- Recommended Playlists Section -->
+<div id="playlists-section" class="hidden">
+   
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Playlist Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Calming Instrumentals</h3>
+            <p class="text-gray-600 mt-2">Relax with calming instrumental music to ease your mind.</p>
+            <a href="https://spotify.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Listen on Spotify</a>
+        </div>
+
+        <!-- Another Playlist Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Mindfulness Podcasts</h3>
+            <p class="text-gray-600 mt-2">Tune into podcasts that focus on mindfulness and mental well-being.</p>
+            <a href="https://spotify.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Listen on Spotify</a>
+        </div>
+
+        <!-- Additional Playlist Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Stress Relief Music</h3>
+            <p class="text-gray-600 mt-2">Music designed to reduce stress and help you relax.</p>
+            <a href="https://spotify.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Listen on Spotify</a>
+        </div>
+    </div>
 </div>
+
+
+<!-- Resources Section -->
+<div id ="resources-section" class="hidden">
+       
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Resource Card -->
+         <!-- Search Bar for Resources -->
+        <div class="mb-4">
+            <input id="resource-search" type="text" placeholder="Search resources..." class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#9fa8da]">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Stress Relief Techniques</h3>
+            <p class="text-gray-600 mt-2">Learn effective ways to manage stress and improve your mental well-being.</p>
+            <a href="https://example.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Read More</a>
+        </div>
+
+        <!-- Another Resource Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Mindfulness and Meditation</h3>
+            <p class="text-gray-600 mt-2">Explore mindfulness practices to reduce anxiety and stay grounded.</p>
+            <a href="https://example.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Read More</a>
+        </div>
+
+        <!-- Additional Resource Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Understanding Anxiety</h3>
+            <p class="text-gray-600 mt-2">A guide to recognizing and managing anxiety symptoms.</p>
+            <a href="https://example.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Read More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Recommended Playlists Section -->
+<div id="playlists-section" class="hidden">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Playlist Card -->
+         <!-- Search Bar for Playlists -->
+        <div class="mb-4">
+            <input id="playlist-search" type="text" placeholder="Search playlists..." class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#9fa8da]">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Calming Instrumentals</h3>
+            <p class="text-gray-600 mt-2">Relax with calming instrumental music to ease your mind.</p>
+            <a href="https://spotify.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Listen on Spotify</a>
+        </div>
+
+        <!-- Another Playlist Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Mindfulness Podcasts</h3>
+            <p class="text-gray-600 mt-2">Tune into podcasts that focus on mindfulness and mental well-being.</p>
+            <a href="https://spotify.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Listen on Spotify</a>
+        </div>
+
+        <!-- Additional Playlist Card -->
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold text-[#9fa8da]">Stress Relief Music</h3>
+            <p class="text-gray-600 mt-2">Music designed to reduce stress and help you relax.</p>
+            <a href="https://spotify.com" class="text-[#d4a5a5] font-semibold hover:underline mt-4 inline-block">Listen on Spotify</a>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+<!-- Contacts Section (Initially Hidden) -->
+<section id="contacts-section" class="hidden bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Contacts</h2>
+
+    <!-- Search Bar -->
+    <div class="mb-4">
+        <input type="text" placeholder="Search Contacts..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#9fa8da]">
+    </div>
+
+    <!-- Add New Contact Button -->
+    <div class="mb-4">
+        <button class="w-full bg-[#9fa8da] text-white py-2 rounded-lg hover:bg-[#d4a5a5] transition duration-300">
+            Add New Contact
+        </button>
+    </div>
+
+    <!-- Contact List -->
+    <div class="space-y-4">
+        <!-- Example Contact Card -->
+        <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Dr. Jane Doe</p>
+                <p class="text-gray-600">Psychologist</p>
+                <p class="text-gray-500">janedoe@example.com</p>
+                <p class="text-gray-500">+1 234 567 8901</p>
+            </div>
+            <div class="flex space-x-2">
+                <!-- Email Button -->
+                <button class="bg-[#9fa8da] text-white px-3 py-1 rounded-lg hover:bg-[#d4a5a5] transition duration-300">
+                    Email
+                </button>
+                <!-- Call Button -->
+                <button class="bg-green-600 text-white px-3 py-1 rounded-lg hover:bg-green-700 transition duration-300">
+                    Call
+                </button>
+                <!-- Delete Button -->
+                <button class="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition duration-300">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <script>
     // Handle Chat Input Submission
@@ -112,7 +255,6 @@
         }, 800); // Bot response delay
     });
     </script>
-
 
 <!-- scrpt for the history -->
 <script>
@@ -243,6 +385,108 @@
         journalEntries.splice(index, 1);
         displayJournalEntries();
     }
+</script>
+
+
+<!-- script for the resorces and playlists-->
+ <!-- JavaScript to Toggle Sections -->
+<script>
+    document.getElementById("resources-btn").addEventListener("click", function() {
+        document.getElementById("resources-section").classList.remove("hidden");
+        document.getElementById("playlists-section").classList.add("hidden");
+    });
+
+    document.getElementById("playlists-btn").addEventListener("click", function() {
+        document.getElementById("playlists-section").classList.remove("hidden");
+        document.getElementById("resources-section").classList.add("hidden");
+    });
+</script>
+
+<!-- script forfiltering resources -->
+<script>
+    document.getElementById("resource-search").addEventListener("input", function() {
+        const query = this.value.toLowerCase();
+        const resourceCards = document.querySelectorAll(".resource-card");
+
+        resourceCards.forEach(function(card) {
+            const title = card.querySelector("h3").textContent.toLowerCase();
+            if (title.includes(query)) {
+                card.classList.remove("hidden");
+            } else {
+                card.classList.add("hidden");
+            }
+        });
+    });
+</script>
+
+<!-- script for filtering the playlists -->
+<script>
+    document.getElementById("playlist-search").addEventListener("input", function() {
+        const query = this.value.toLowerCase();
+        const playlistCards = document.querySelectorAll(".playlist-card");
+
+        playlistCards.forEach(function(card) {
+            const title = card.querySelector("h3").textContent.toLowerCase();
+            if (title.includes(query)) {
+                card.classList.remove("hidden");
+            } else {
+                card.classList.add("hidden");
+            }
+        });
+    });
+</script>
+
+<!-- script for turning the resources and playlists on and off -->
+<!-- <script>
+    // Function to toggle Resources section
+    document.getElementById("resources-btn").addEventListener("click", function() {
+        const resourcesSection = document.getElementById("resources-section");
+        const playlistsSection = document.getElementById("playlists-section");
+        
+        // Toggle resources section visibility
+        if (resourcesSection.classList.contains("hidden")) {
+            resourcesSection.classList.remove("hidden");
+            playlistsSection.classList.add("hidden"); // Hide playlists when resources are shown
+        } else {
+            resourcesSection.classList.add("hidden"); // Hide resources when clicked again
+        }
+    });
+
+    // Function to toggle Recommended Playlists section
+    document.getElementById("playlists-btn").addEventListener("click", function() {
+        const playlistsSection = document.getElementById("playlists-section");
+        const resourcesSection = document.getElementById("resources-section");
+
+        // Toggle playlists section visibility
+        if (playlistsSection.classList.contains("hidden")) {
+            playlistsSection.classList.remove("hidden");
+            resourcesSection.classList.add("hidden"); // Hide resources when playlists are shown
+        } else {
+            playlistsSection.classList.add("hidden"); // Hide playlists when clicked again
+        }
+    });
+</script> -->
+
+<!-- toggling contact section -->
+<script>
+    // Function to toggle Contacts section
+    document.getElementById("contacts-btn").addEventListener("click", function() {
+        const contactsSection = document.getElementById("contacts-section");
+        const otherSections = ["resources-section", "playlists-section"];
+        
+        // Hide other sections (Resources, Playlists) when Contacts is clicked
+        otherSections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) section.classList.add("hidden");
+        });
+
+        // Toggle Contacts section visibility
+        if (contactsSection.classList.contains("hidden")) {
+            contactsSection.classList.remove("hidden");
+        } else {
+            contactsSection.classList.add("hidden");
+        }
+    });
 </script>
 
 
